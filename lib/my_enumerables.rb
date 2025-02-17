@@ -22,6 +22,24 @@ module Enumerable
     end
     count
   end
+
+  def my_each_with_index(&block)
+    index = 0
+    for element in self
+      block.call(element, index)
+      index += 1
+    end
+  end
+
+  def my_inject(initial_value = first, &block)
+    acc = initial_value
+    start_index = initial_value == first ? 1 : 0
+
+    drop(start_index).each do |element|
+      acc = block.call(acc, element)
+    end
+    acc
+  end
 end
 
 # You will first have to define my_each
