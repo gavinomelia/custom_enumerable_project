@@ -59,6 +59,14 @@ module Enumerable
   def my_none?(&block)
     !my_any?(&block)
   end
+
+  def my_select(&block)
+    acc = []
+    for element in self
+      acc << element if block.call(element)
+    end
+    acc
+  end
 end
 
 # You will first have to define my_each
