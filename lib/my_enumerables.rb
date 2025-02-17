@@ -48,6 +48,17 @@ module Enumerable
     end
     acc
   end
+
+  # def my_none?(&block)
+  #   each do |element|
+  #     return false if block.call(element)
+  #   end
+  #   true
+  # end
+
+  def my_none?(&block)
+    !my_any?(&block)
+  end
 end
 
 # You will first have to define my_each
